@@ -1,0 +1,174 @@
+
+.nav-item{
+	letter-spacing: .1em;
+	font-size: 14px;
+	text-tranform: uppercase;
+}
+.dropdown-item{
+	letter-spacing: .2em;
+	font-size: 14px;
+	text-tranform: uppercase;
+}
+
+.my_footer{
+	background-color: #f8f9fa;
+	height: 60px;
+}
+.my_footer p{
+	padding-top:20px;
+	font-size:14px;
+}
+
+.my_row_class {
+	padding-top: 15px;
+}
+.my_row_class .mx-auto p{
+	color: black;
+	font-size: 12px;
+}
+.my_row_class .mx-auto p a{
+	color: black;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+.my_image{
+	
+}
+.my_title {
+	font-size: 20px;
+	text-transform: uppercase;
+	letter-spacing: .50em;
+
+}
+.my_image_padding{
+	padding-top: 5px;
+}
+.my_bottom_margin
+{
+	margin-bottom: 10px;
+}
+.card-body h4 {
+font-size:14px;
+text-transform: uppercase;
+letter-spacing: .1em;
+}
+.my_prod_row_class{
+	padding-top: 14px;
+	padding-bottom: 14px;
+
+}
+
+.my_prod_row_class .mx-auto p{
+	color: black;
+	font-size: 12px;
+}
+.my_prod_row_class .mx-auto p a {
+	color:black;
+	font-size: 12px;
+	text-decoration: none;
+	
+}
+
+.my_prod_title{
+	font-size: 16px;
+	text-transform: uppercase;
+	padding-top: 15px;
+	letter-spacing: .1em;
+	padding-bottom: 10px;
+}
+
+.my_prod_text{
+	padding-right: 20px;
+}
+
+.my_search_text {
+	padding-top: 20px;
+}
+.my_custom_table{
+	max-width:100vw;
+	font-size: 14px;
+}
+.my_custom_thead{
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	background-color: #f8f9fa ;
+}
+.custom_image{
+	width:100px;
+	height: 100px;
+}
+.custom_a {
+	text-decoration: none;
+}
+.my_custom_button{
+	margin: 10px;
+}
+.stripe-button-el {
+	margin: 10px !important;
+	width: 100% !important;
+	display: block !important;
+	background-color: #868e96 !important;
+	border:0px !important;
+	background-image: none !important;
+
+}
+.stripe-button-el span {
+	display: block;
+	position: relative;
+	padding: 0px 12px;
+	height: 36px !important;
+	line-height: 36px !important;
+	color: #fff !important;
+	background-image: none !important;
+	background: none !important;
+}
+.errorlist li{
+	color: red;
+	font-weight: bold;
+	
+}
+.my_top_navbar_div{
+	height: 60px;
+	line-height: 50px;
+}
+
+.my_custom_menu{
+	text-align: right !important;
+
+}
+.my_custom_menu ul li {
+	list-style: none;
+	color: #000;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+	font-size: 12px;
+	padding-right: 20px;
+	display: inline;
+
+}
+.my_custom_menu ul li a {
+	text-decoration: none;
+	color: black;
+	list-style: none;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+	font-size:12px;
+}
+
+.grid-item:hover {
+  background-color: yellow;
+}
+
+#mxauto{
+	margin-left: 0 !important
+}
+
+@media only screen and (max-width: 767px) {
+	
+	td{ margin-right: 0;
+		padding-right: 0 !important;
+		padding:0 !important;}
+
+  }

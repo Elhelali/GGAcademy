@@ -1,0 +1,135 @@
+<head>
+ 
+  <style>
+
+.fa-stack[data-count]:after{
+  position:absolute;
+  left:30px;
+  top:0;
+  content: attr(data-count);
+  font-size:80%;
+  padding:0.18em;
+  border-radius:99px;
+  border-width: 2px;
+  line-height:0.7em;
+  width:15px;
+  color: teal;
+  min-width:1em;
+  font-weight:bold;
+  background: white;
+  border-style:solid;
+}
+.fa-circle {
+  color:white;
+}
+
+.cart {
+  font-size: 30px;
+  color:teal;
+    background:rgb(248, 249, 250);
+}
+
+  </style>
+  {% load staticfiles %}
+	<link rel="stylesheet" href="{%static 'css/custom.css'%}">
+</head>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <div class="row" style="width:100%">
+    
+    <div style="display:flex; margin-left:10px;padding-top: 13px;">
+      <ul id='shop' class="navbar-nav mr-auto" >
+        <li class="nav-item dropdown {% if 'shop' in request.path%} active{%endif%}">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Shop
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'shop:allProdCat' %}">All Products </a>
+            {% for cat in links %}
+            <a class="dropdown-item" href="{{cat.get_url}}">{{cat.name}}</a>
+            {%endfor%}
+          </div>
+        </li>
+            
+      </ul>
+    
+      {% if item_count > 0 %}
+      <a class="nav-link" href="{% url 'cart:cart_detail'%}">
+      <span class="fa-stack has-badge" data-count="{{item_count}}">
+          
+          <i class="fa fa-shopping-cart cart"></i>
+        </span>
+      </a>
+        {% endif %}
+      
+
+    
+    </div>
+
+    <div>
+       
+        {% if request.user.profile.location %}
+        <a data-toggle="popover"  class="gold" title="Your Location - {{request.user.profile.location}}" data-content="Click to Change" id="mapp" ; href="{% url 'location:map'%}" >
+          {{request.user.profile.location}} <i style="font-size: 30px" class="gold fas fa-map-marker-alt maplogo"></i>
+        </a>
+
+        {% elif request.session.location %}
+        <a  data-toggle="popover"  class="gold" title="Your Location - {{request.session.location}}" data-content="Click to Change" id="mapp" ; href="{% url 'location:map'%}" >
+          {{request.session.location}} <i style="font-size: 30px" class="gold fas fa-map-marker-alt maplogo"></i>
+        </a>
+            
+      
+        
+        {% else %}
+        
+        <a data-toggle="popover"  class="gold" title="Your Location - No Location Selected" data-content="Click to Change" id="mapp" ; href="{% url 'location:map'%}" >
+       Set Location <i style="font-size: 30px" class="gold fas fa-map-marker-alt maplogo"></i>
+        </a>
+        {% endif %}
+    </div>
+    
+    <!----div class="searchbar" >
+      <form id="navform" class="form-inline my-2  " action="{% url 'search_app:searchResult' %}" method="get">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2 " id="bar" type="search" placeholder="Search" aria-label="Search" name="q">
+        <button class="btn btn-secondary my-2 my-sm-0 gold" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </div-->
+    
+  
+      <div class="auth my_custom_menu">
+       
+        {% if request.user.is_authenticated and request.user.first_name %}
+        
+          Welcome, 
+          <a href="#" id="user" class="auth dropdown-toggle gold" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{request.user.first_name}} <i class="fas fa-user-circle"></i></a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
+            <a href="{% url 'order:order_history' %}" class="dropdown-item">Order History</a>
+            
+            
+          </div>
+        
+       
+          <a  id=signout class="gold auth" href="{% url 'signout' %}"> Sign-out <i class="fas fa-sign-out-alt "></i></a>
+        
+        {%else%}
+      
+          <a class="gold auth" style="padding-right:5px;"href="{% url 'signup' %}"> Sign Up <i class="fas fa-user-plus"></i></a>
+        
+        
+          <a class="gold auth" href="{% url 'signin' %}">Sign in <i class="fas fa-sign-in-alt"></i></a>
+        </p>
+        </p>
+        
+        {% endif %}
+        
+      
+      </div>
+
+  </div>
+</nav>
+
+

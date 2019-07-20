@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+{% extends "base.html" %}
+{%load staticfiles%}
+{%block metadescription%}
+	{{product.description|truncatewords:155}}
+{%endblock%}
+{%block title%}
+	{{product.name}} - GGAcademy
+{% endblock %}
+
+{%block content%}
+<h1><header><center>{{post.title}}</center></header></h1>
+Table of content <br>
+<div class="bg-light" style="display:inline-block;padding:20px;">  
+    
+    {% for topic in topics %}
+<a  style="color: rgb(139, 0, 0)" href="#{{topic.title}}">{{topic.number}}. {{topic.title}}<br style="height: 100vh"></a>
+
+{% for i in topic.Subtopic.all %}
+    <a href="#{{i.title}}" style="padding-left:20px;color: rgb(194, 181, 0)">{{topic.number}}.{{i.number}} {{i.title}} 
+    </a> <br style="height: 100vh">
+{% endfor %}
+{%endfor%}
+</div>
+
+<div>  {% for topic in topics %}
+
+<h2  style="color: rgb(139, 0, 0)" id="{{topic.title}}">{{topic.number}}. {{topic.title}}</h2>
+<p>{{topic.text}}</p>
+
+{% for i in topic.Subtopic.all %}
+    <h5 id="{{i.title}}" style="color:  rgb(211, 200, 52)">{{topic.number}}.{{i.number}} {{i.title}}</h5>
+    <p> {{i.text}}</p>
+{% endfor %}
+
+
+{% endfor %}
+
+</div> 
+
+
+
+
+{% endblock %}

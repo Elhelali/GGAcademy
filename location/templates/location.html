@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+{% extends "base.html" %}
+{%load staticfiles%}
+{%block metadescription%}
+	{{product.description|truncatewords:155}}
+{%endblock%}
+{%block title%}
+	{{product.name}} - GGAcademy
+{% endblock %}
+
+{%block content%}
+<head>
+<style>
+	[type=radio]:checked + tr {
+	color:purple;
+
+  }
+  	[type=radio]:hover + tr {
+	color:red;
+
+  }
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+	   }
+	
+
+    
+
+
+    </style>
+     
+<!-- or -->
+
+</head>
+<body>
+
+<div class="container" style="min-height: 600px;">
+
+		<h1 class="my_title text-center"> Select Default Location</h1>
+		<br>
+		{% if request.user.profile.location %}
+		<p>{{ request.user.profile.location }}</p>
+		{% endif %}			
+	<div class="row">
+	
+		<div class="col-12 col-sm-12 col-md-12 col-sm-12 col-lg-8 bg-light" >
+		
+				<br>
+				
+					
+			<div class="text-center" style="height:400px;overflow-y: scroll;">
+					
+					<h1 class="text-center my_title"> LIBRARIES</h1>
+					
+					<span class=""style="text-align: right; width: 10px;">
+					<p>Sort by Location  <button style="width: 100px; margin-left: 10px;margin-right:10px; right:0px;" class="btn btn-info"onclick="getLocation()">  <i class="fas fa-location-arrow"></i></button>
+					</p>
+				</span>
+			
+			
+				<table class="table table-striped">
+
+					<thead>
+						<tr>
+							<th> Library</th>
+							<th> Address</th>
+							
+							<th> Select</th>
+						</tr>
+					</thead>
+					<tbody>
+						<form style="position: relative;" id="mainform" action="" method="POST">
+				{% csrf_token %}
+					{% for library in sorted_list %}
+					
+							
+						<tr >
+							
+							<td>{{ library.name }} {% if longitude != "-115.19775" %}
+							<p style="color: gray"> {{ library.distance }} miles	</>
+							{% endif %}</td>
+							<td>{{ library.address }}</td>
+						
+							
+							<td>
+								<input style="position:relative;opacity: 1 !important;"type="radio" id="{{library.id}}"name="location" value="{{library.id}}" /> 
+
+							
+
+	      			 		</td>
+
+													
+					
+						{% endfor %}
+
+					</tbody>
+				</table>
+				
+
+			
+				
+			
+			</div>
+			<input id="location" type="submit" value="Submit"  style="margin:10px;position: relative;  float: right; margin-right: 30px" class="btn btn-info">
+					</form>
+				
+				
+		</div>
+
+		<div class=" col-12 col-sm-12 col-md-12 col-lg-4 text-center my_custom_div">
+			<br>
+			<iframe src="https://www.google.com/maps/d/embed?mid=1g5WoeShZEtkH6DWS9G_gXz9xuDZ9Yzmn" width="100%" height="400"></iframe>
+		
+		</div>
+	</div>
+
+
+
+<form id="geoform" action="" method="POST">
+		{% csrf_token %}
+    <input id="location" type="hidden" name="coord" value="{'lon':-115.1877554,'lat':36.19537699999995}">
+</form>
+
+</div>
+<script>
+
+
+function getLocation() {
+  if (navigator.geolocation) {
+
+    navigator.geolocation.getCurrentPosition(showPosition);
+
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+	var lat = position.coords.latitude;
+	var lon = position.coords.longitude;
+	var	theObject={lon,lat}
+	a = JSON.stringify( theObject )
+	document.forms["geoform"].coord.value = a
+	document.forms["geoform"].submit();
+}
+
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXVueb1n7WXzPrhAttY3K6Qg2kQG3iMU4&libraries=places">
+var defaultBounds = new google.maps.LatLngBounds(
+	new google.maps.LatLng(-115.082475,36.070734),
+	new google.maps.LatLng(-115.304707,36.195776))
+var options={bounds:defaultBounds}
+</script>
+</body>
+</html>
+{% endblock %}

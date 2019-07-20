@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{%load staticfiles%}
+{%block metadescription%}
+	{{product.description|truncatewords:155}}
+{%endblock%}
+{%block title%}
+	{{product.name}} - GGAcademy
+{% endblock %}
+
+{%block content%}
+<div class="row  my_prod_row_class " id="calrow" >
+	<div class="mx-auto" >
+		<p > <a href="{% url 'shop:allProdCat' %}"> Home</a> | <a href="{{product.category.get_url}}" > {{product.category}}</a> | {{product.name}} </p>
+	</div>
+
+	<div class="container" > 
+		<div class="row">
+
+		<div class="col-sm-12  col-lg-4 ">
+			{% include "schedule.html" %}
+		</div>
+		
+		<div class="col-12 col-sm-12 col-md-12 col-lg-8 text-center">
+		{% include "calendar.html" %}
+		</div>
+
+</div>
+<!--		<br>
+		<div class="row">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+				<div style="margin:auto;min-width: 18rem">
+					<img style="width: 200px ; margin:auto;" src="{{product.image.url}}" alt=
+					"{{product.name}}"> 
+				</div>
+			</div>
+			<div class="col-12 col-sm-12 col-md-12 col-lg-6">
+			<div>
+				<h1 class="my_prod_title">{{product.name}}</h1>
+				<p>$ {{product.price}}</p>
+				<p class="my_title">Product Description</p>
+				<p>{{product.description}}</p>
+				{%if product.stock <= 0%}
+					<p class="text-justify my_prod_text"> Out of Stock</p>
+				{%else%}
+					<a class="btn btn-secondary" href="{% url 'cart:add_cart' product.id %}">Schedule later</a> -->
+				{%endif%}
+
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+
+
+
+
+
+{%endblock%}
+
+

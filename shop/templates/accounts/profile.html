@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}
+	Thanks - GGAcademy
+{%  endblock %}
+{% block content %}
+<form  action="" method="POST" class="text-center">
+		{% csrf_token %}
+		<br>
+		<h1 class="text-center my_title">
+		Profile
+		</h1>
+		<br>
+		<h6> Name </h6>
+		<input type="text" value="{{request.user.first_name}}  {{request.user.last_name}}" class="field greyfield" readonly></input>
+		<br><br>
+		<h6>Username</h6>
+		<input type="text" name="user" value="{{request.user.username}} " class="field greyfield" readonly></input>
+		<br><br>
+		<h6>Phone</h6>
+		<input type="text" name="phone0" value="+1" class="" readonly style="width: 30px; margin-right:5px;"> 
+		<input type="text" name="phone1" maxlength="3" value="{{phone1}}" style="width: 35px;"> -
+		<input type="text" name="phone2" maxlength="3" value="{{phone2}}" style="width: 35px;"> -
+		<input type="text" name="phone3" maxlength="4" value="{{phone3}}"style="width: 50px;">
+		<br><br>
+		<h6>Pick-up Address</h6>
+		<input type="text" name="pickup" value="{{request.user.profile.pickup}}"  class="field">
+		<br><br>
+		<input type="submit"  value="Update">
+		</input>
+</form>
+<br>
+{% endblock %}
