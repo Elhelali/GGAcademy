@@ -36,9 +36,9 @@ def add_cart (request , product_id,**kwargs):
 			)
 	
 	try: cart_item.location = request.user.profile.location
-	except:
-		cart_item.location= request.session['location']
-	finally:pass		
+	except:	
+		try: cart_item.location= request.session['location']
+		except:pass	
 	cart_item.save()
 
 	return redirect ("cart:cart_detail")
