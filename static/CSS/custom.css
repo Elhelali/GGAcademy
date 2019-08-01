@@ -354,11 +354,68 @@ max-height:100%;
 	
 }
 .field{
-	text-align: ;
+	
 	width:150px;
+}
+#schedform {
+	margin-top:15px;
+	 margin-left: auto; 
+	margin-right: auto;
+}
+.schediv {
+	display: block;  
+	margin: auto;
+	width: 100%
+}
+.schedbtn{
+	display: block;
+	margin:auto;  
+	margin-bottom: 15px;
+	pointer-events: none;
+	border-radius: 5px;
+	height:38px;
+	color:darkgrey;
+}
+#frm1_submit{
+	display: block; margin-left:auto; margin-right:auto;  background-color: black; border-radius: 8px
 }
 
 @media screen and (max-width: 767px) {
+
+	.schediv{
+		display: inline;
+		width:50px !important;
+		margin:auto;
+	}
+	.schediv label{
+		width:40px !important;
+		margin:20px !important;
+		
+	}
+	
+	.schediv label h3{
+		display: inline !important;
+		width:40px !important;
+		padding:10px;
+	}
+	.schediv  .schedbtn {
+		width:53px !important;
+		border-radius: 5px;
+		padding-bottom:4px;	
+
+		margin-left: 20px;
+		margin-right: 5px;
+		height:42px;
+		display: inline;
+
+		
+	}
+	#frm1_submit{
+		margin-top:20px;
+		margin-bottom:20px;
+		width:200px !important;
+		height:50px;
+	}
 	#calrow{margin-left:5 !important;
 		margin-right:5 !important;
 		
@@ -366,11 +423,19 @@ max-height:100%;
 	#calendar{
 		margin-left:10px;
 	}
-
+	
 
 	.grid-item {
 	  padding: 0;
-	  	}
+		  }
+	.grid-item a {
+		position:relative;
+		top:5px;
+	}
+	.grid-item p {
+		position:relative;
+		top:5px;
+	}
 	h4{
 		width: 100%;
 		font-size: 11px !important;
@@ -405,9 +470,10 @@ max-height:100%;
 		max-width: 85%;
 	}
 	.dropdown-item{
-		white-space: nowrap;
+		
 		overflow: hidden;
 		text-overflow: "..";
+		/* white-space: nowrap; */
 	}
 
 

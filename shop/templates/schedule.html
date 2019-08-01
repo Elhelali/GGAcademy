@@ -19,7 +19,7 @@
 </style>
 <div class="container">
 
-	<div class="" style="margin: auto; margin-top: 20px; width: 100%;">
+	<div id = "d8"style="margin: auto;  width: 100%;">
 
 
 	
@@ -50,7 +50,7 @@
 	
 
 
-<form  style="margin-top:15px; margin-left: auto; margin-right: auto;" action="" method="POST">
+<form  id = "schedform" action="" method="POST">
 	
 					{% csrf_token %}
 					
@@ -58,12 +58,12 @@
 			
 	{% for slot, value in slots.items %}
 		{% if slot in dborders or slot in dbcarts%}
-		<div style="display: block;  margin: auto;width: 100%" >
-		<button style="pointer-events: none; display: block; margin:auto;  margin-bottom: 15px;" class="btn btn-secondary slots">{{value}}</button>
+		<div class="schediv" >
+		<button class=" btn-secondary slots schedbtn">{{value}}</button>
 	</div>
 
 			{% else %}
-		<div style="display: block; margin: auto; width: 100%" >
+		<div class="schediv" >
 		<label style="margin:auto;width: 100%">
 		 <input type="radio" name="slot" value={{slot}} >
 		<h3 style="display: block; margin-left:auto; margin-right:auto; margin-bottom: 15px;" id="slot" class="btn  btn-outline-dark slots" >{{value}}</h3>
@@ -79,7 +79,7 @@
 
 	
 
-	<input style="display: block; margin-left:auto; margin-right:auto;  background-color: black; border-radius: 8px" id="frm1_submit" type="submit" value="Schedule" class="btn btn-info">
+	<input  id="frm1_submit" type="submit" value="Schedule" class=" btn-info">
 
 	
 </form>

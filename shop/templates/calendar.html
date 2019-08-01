@@ -44,16 +44,16 @@
 		</div>
 	{% elif dey < tday and month == month_today %}
 		<div class="grid-item" style="color: grey; ">
-		{{dey}}
+		<p>{{dey}} </p>
 		</div>
 	{% elif dey == day %}
 	<div class="grid-item" style="background-color:teal" >
 		<a href="{{dey}}"><mark  style="background-color: teal; border-radius: 10px">{{dey}}</a>
 		</div>
 	{% else %}
-	<a style="color:black; ;" href="{{dey}}">
+	<a style="color:black; ;" href="{{dey}}#d8">
 		<div class="grid-item" >
-		{{dey}}
+		<p>{{dey}}</p>
 		</div>
 		</a>
 	{% endif %}

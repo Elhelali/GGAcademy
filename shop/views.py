@@ -9,6 +9,7 @@ from datetime import datetime as dt
 from .scheduling import *
 from order.models import Order,OrderItem
 from cart.models import CartItem
+from .mailgun import welcome_message
 
 
 def index (request):
@@ -127,6 +128,8 @@ def signupView (request):
 			password = form.cleaned_data.get('password1')
 			user = authenticate(username=username, password=password)
 			login(request, user)
+			welcome_message(email)
+
 			
 			
 			
