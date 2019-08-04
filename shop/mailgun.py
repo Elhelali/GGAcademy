@@ -1,3 +1,5 @@
+import requests
+
 def welcome_message(usermail):
 	return requests.post(
 		"https://api.mailgun.net/v3/YOUR_DOMAIN_NAME/messages",

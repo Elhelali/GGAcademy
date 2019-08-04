@@ -10,6 +10,7 @@ from .scheduling import *
 from order.models import Order,OrderItem
 from cart.models import CartItem
 from .mailgun import welcome_message
+import requests
 
 
 def index (request):
@@ -115,14 +116,12 @@ def signupView (request):
 		if form.is_valid():
 			form.save()
 			a = form.cleaned_data
-			print(a)
 			username = form.cleaned_data.get('username')
 			email = form.cleaned_data.get('email')
 			signup_user = User.objects.get(username=username,email=email)
 			signup_user.profile.phone = form.cleaned_data.get('phone')
 			signup_user.profile.pickup = form.cleaned_data.get('pickup')
 			signup_user.save()
-			print(signup_user)
 			customer_group = Group.objects.get (name='Customer')
 			customer_group.user_set.add(signup_user)
 			password = form.cleaned_data.get('password1')
